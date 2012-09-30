@@ -1,0 +1,61 @@
+<!doctype html>
+<!-- The DOCTYPE declaration above will set the     -->
+<!-- browser's rendering engine into                -->
+<!-- "Standards Mode". Replacing this declaration   -->
+<!-- with a "Quirks Mode" doctype is not supported. -->
+
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link type="text/css" rel="stylesheet" href="SpaceShooter.css">
+    <title>Space shooter GWT game</title>
+    <script type="text/javascript" language="javascript" src="spaceshooter/spaceshooter.nocache.js"></script>
+  </head>
+
+  <!--                                           -->
+  <!-- The body can have arbitrary html, or      -->
+  <!-- you can leave the body empty if you want  -->
+  <!-- to create a completely dynamic UI.        -->
+  <!--                                           -->
+  <body>
+
+    <!-- OPTIONAL: include this if you want history support -->
+    <iframe src="javascript:''" id="__gwt_historyFrame" tabIndex='-1' style="position:absolute;width:0;height:0;border:0"></iframe>
+    
+    <!-- RECOMMENDED if your web app will not function without JavaScript enabled -->
+    <noscript>
+      <div style="width: 22em; position: absolute; left: 50%; margin-left: -11em; color: red; background-color: white; border: 1px solid red; padding: 4px; font-family: sans-serif">
+        Your web browser must have JavaScript enabled
+        in order for this application to display correctly.
+      </div>
+    </noscript>
+
+    <h1>Space shooter GWT game</h1>
+    <div class="about" id="loading" style="position: absolute; top: 200px; left: 300px;">Loading...</div>
+    <div class="about">
+    	<div style="position: absolute; top: 370px; left: 245px;">
+    		Game by <a href="mailto:dnikolaenko9@gmail.com">Dmitry Nikolaenko</a>
+    	</div>
+    	<div style="position: absolute; top: 390px; left: 140px;">
+    		Developed with 
+    		<a href="http://code.google.com/p/gwt-voices/">gwt-voices</a> 
+    		and 
+    		<a href="https://developers.google.com/web-toolkit/">Googwle Web Toolkit</a> (GWT)
+    	</div>
+    </div>
+    <div id="instructions" style="display: none;">
+    	<div class="instructions" style="position: absolute; top: 250px; left: 290px;">
+    		Esc - pause
+    	</div>
+    	<div class="instructions" style="position: absolute; top: 270px; left: 225px;">
+    		 Shift key or left mouse button - fire
+    	</div>
+    	<div class="instructions" style="position: absolute; top: 290px; left: 170px;">
+    		 Ctrl - enable/disable the position information of elements
+    	</div>
+    	<div class="instructions" style="position: absolute; top: 310px; left: 125px;">
+    		Mouse move or arrow keys (up, down, left, right) - spaceship movement
+    	</div>
+    </div>
+  </body>
+</html>
