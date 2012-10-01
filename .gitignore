@@ -1,0 +1,13 @@
+.classpath
+.project
+.settings/
+.gwt/
+.apt_generated/
+*.launch
+
+war/WEB-INF/deploy
+war/WEB-INF/classes
+
+war/WEB-INF/lib/*.jar
+
+jar
