@@ -4,10 +4,12 @@
 .gwt/
 .apt_generated/
 *.launch
+*_*.properties
 
 war/WEB-INF/deploy
 war/WEB-INF/classes
 
 war/WEB-INF/lib/*.jar
 
-jar
+gwt-unitCache/
+hs_err_pid*.log
