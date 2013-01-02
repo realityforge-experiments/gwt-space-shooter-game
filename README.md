@@ -39,4 +39,17 @@ But you can take all the bonuses at once, but only one type. End time of the bon
 The game has a background music and the sound of the collision. There are some really good old school 8-bit 
 tracks that really gets you specific atmosphere. The magic of the sound was done using [`gwt-voices`](http://code.google.com/p/gwt-voices/) library.  
 
+### GWT Linker
+I'm a little bit experimented with HTML5 offline browsing support and as example upload this feature to the game.
+Almost all code can be find in linker package. 
+Documentation for ['offline web app'](http://www.w3.org/html/wg/drafts/html/master/browsers.html#offline).
+
+To make GWT application runs offline need to write a custom linker.
+On every compile, linker regenerate the spaceshootercache.manifest file with files from the public path of the module.
+
+Main module SpaceShooter.gwt.xml contains properties with <extend-configuration-property /> tag.
+['LinkerContext'](http://google-web-toolkit.googlecode.com/svn/javadoc/2.5/com/google/gwt/core/ext/LinkerContext.html) used to get ConfigurationProperty, it contains all configuration property values in the 
+module. It provides access to data about the linking process. 
+And method PersonalLinker#getPropertiesExtraFiles() get array of configured external properties.
+
 Feel free to use this code to get your GWT game up and running.
