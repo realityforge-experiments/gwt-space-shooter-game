@@ -1,0 +1,4 @@
+<module>
+	<define-linker name="personalManifestLinker" 
+		class="com.dmitrynikol.spaceshooter.client.linker.PersonalLinker" />
+</module>
