@@ -41,7 +41,7 @@ tracks that really gets you specific atmosphere. The magic of the sound was done
 
 ### GWT Linker
 I'm a little bit experimented with HTML5 offline browsing support and as example upload this feature to the game.
-Almost all code can be find in linker package. 
+Almost all code can be find in [linker](https://github.com/dmitrynikol/gwt-space-shooter-game/tree/master/src/com/dmitrynikol/spaceshooter/client/linker) package. 
 Documentation for [offline web applications](http://www.w3.org/html/wg/drafts/html/master/browsers.html#offline).
 
 To make GWT application runs offline need to write a custom linker.
@@ -51,5 +51,6 @@ Main module SpaceShooter.gwt.xml contains properties with <extend-configuration-
 [LinkerContext](http://google-web-toolkit.googlecode.com/svn/javadoc/2.5/com/google/gwt/core/ext/LinkerContext.html) used to get ConfigurationProperty, it contains all configuration property values in the 
 module. It provides access to data about the linking process. 
 And method PersonalLinker#getPropertiesExtraFiles() get array of configured external properties.
+
 
 Feel free to use this code to get your GWT game up and running.
