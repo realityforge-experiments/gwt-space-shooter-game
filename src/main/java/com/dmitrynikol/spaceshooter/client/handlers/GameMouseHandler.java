@@ -10,25 +10,25 @@ import com.google.gwt.event.dom.client.MouseMoveHandler;
 
 /**
  * Game mouse handler.
- * 
+ *
  * @author Dmitry Nikolaenko
  *
  */
 public class GameMouseHandler implements MouseDownHandler, MouseMoveHandler {
-	
-	private Spaceship spaceship; 
+
+	private Spaceship spaceship;
 	private Position2D currentPosition;
 	private Size2D elementSize;
-	
+
 	public GameMouseHandler(Spaceship element) {
 		this.spaceship = element;
 	}
-	
+
 	@Override
 	public void onMouseMove(MouseMoveEvent event) {
 		currentPosition = spaceship.getPosition();
 		elementSize = spaceship.getSize();
-		
+
 		currentPosition.setX(event.getX());
 		currentPosition.setY(event.getY());
 		spaceship.setPosition(currentPosition);
@@ -36,9 +36,10 @@ public class GameMouseHandler implements MouseDownHandler, MouseMoveHandler {
 
 	@Override
 	public void onMouseDown(MouseDownEvent event) {
-		Position2D bulletPosition = 
-				new Position2D(currentPosition.getX() + (elementSize.width == 0 ? 24 : elementSize.width / 2), 
+		Position2D bulletPosition =
+				new Position2D(currentPosition.getX() + (elementSize.width == 0 ? 24 : elementSize.width / 2),
 						currentPosition.getY() - 15);
 		spaceship.shot(bulletPosition);
 	}
 }
+

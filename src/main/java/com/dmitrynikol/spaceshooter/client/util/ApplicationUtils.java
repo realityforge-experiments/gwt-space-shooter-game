@@ -20,47 +20,47 @@ import com.google.gwt.user.client.ui.RootPanel;
 
 /**
  * Miscellaneous utility functions.
- * 
+ *
  * @author Dmitry Nikolaenko
- * 
+ *
  */
 public final class ApplicationUtils {
-	
+
 	public static final int MAXIMUM_WIDTH_BOUNDARY = 600;
-	
+
 	public static final int CANVAS_HEIGHT = 300;
 	public static final int CANVAS_WIDTH = 600;
-	
+
 	public static final int DEFAULT_X_COORD = 600;
 	public static final int DEFAULT_Y_COORD = 300;
-	
+
 	public static final int REFRESH_RATE = 20;
 	public static final int DELTA = 10;
 	public static final int MAXIMUM_ASTEROID_NUMBER = 3;
-	public static final int UPDATE_ASTEROID_TIME = 10; 
-	
+	public static final int UPDATE_ASTEROID_TIME = 10;
+
 	public static final int EXPIRE_DATE = 30;
 	public static final long MILLISECS_PER_DAY = 1000L * 60L * 60L * 24L;
-	
+
 	public static final String CANVAS_NOT_SUPPORTED = "Sorry, your browser doesn't support the HTML5 Canvas element";
-	
+
 	public static final CssColor CANVAS_COLOR = CssColor.make("rgba(1,1,0,1.0)");
 	public static final CssColor TEXT_COLOR = CssColor.make("rgba(255,255,0,1.0)");
 	public static final CssColor BULLET_COLOR = CssColor.make("rgba(255,0,255,1.0)");
 	public static final CssColor INFO_SHAPE_WRAPPER_COLOR = CssColor.make("rgba(255,0,255,0.3)");
 	public static final String SHIELD_COLOR = "#8ED6FF";
-	
+
 	private static final ClientBundleInjector injector = GWT.create(ClientBundleInjector.class);
 	private static Context2d context2D;
-	
+
 	/**
      * Class contains only static methods.
      */
 	private ApplicationUtils() {}
-	
+
 	/**
 	 * Generates a random integer number between lower and upper bounds.
-	 * 
+	 *
 	 * @param lower bound for generated integer number
 	 * @param upper bound for generated integer number
 	 * @return a random integer greater than or equal to lower and less than or equal to upper
@@ -71,10 +71,10 @@ public final class ApplicationUtils {
 		}
 		return new java.util.Random().nextInt(upper - lower + 1) + lower;
 	}
-	
+
 	/**
 	 * Generates a random double number between lower and upper bounds.
-	 * 
+	 *
 	 * @param lower bound for generated double number
 	 * @param upper bound for generated double number
 	 * @return random double greater than lower and less than upper
@@ -85,10 +85,10 @@ public final class ApplicationUtils {
 		}
 		return lower + (upper - lower) * new java.util.Random().nextDouble();
 	}
-	
+
 	/**
 	 * Sets the best result of the game to the cookie.
-	 * 
+	 *
 	 * @param name the name of the cookie to be added
 	 * @param value the cookie's value
 	 */
@@ -97,10 +97,10 @@ public final class ApplicationUtils {
 		date.setTime(date.getTime() + MILLISECS_PER_DAY * EXPIRE_DATE);
 		Cookies.setCookie(name, value, date);
 	}
-	
+
 	/**
 	 * Checks collision of objects.
-	 * 
+	 *
 	 * @param first interacting element
 	 * @param first interacting element
 	 * @return return true if collision is happened, otherwise false
@@ -108,24 +108,24 @@ public final class ApplicationUtils {
 	public static boolean collision(Position2D first, Position2D second, Accuracy accuracy) {
 		int xAxisFirst = first.getX();
 		int xAxisSecond = second.getX();
-		
+
 		// bullet moves from the left side
 		int intersectAxisX1 = Math.abs(first.getX() - second.getX());
 		// bullet moves from the right side
-		int intersectAxisX2 = first.getX() - second.getX();  
-		int intersectAxisY = Math.abs(first.getY() - second.getY()); 
-		
+		int intersectAxisX2 = first.getX() - second.getX();
+		int intersectAxisY = Math.abs(first.getY() - second.getY());
+
 		if (xAxisFirst < xAxisSecond && intersectAxisX1 < accuracy.getShootingAccuracy() && intersectAxisY < 50) {
 			return true;
 		}
-		
+
 		if (xAxisFirst > xAxisSecond && intersectAxisX2 < 50 && intersectAxisY < 50) {
 			return true;
 		}
-		
+
 		return false;
 	}
-	
+
 	/**
 	 * Method generate random color.
 	 */
@@ -133,10 +133,10 @@ public final class ApplicationUtils {
 		int redColor = Random.nextInt(255);
 		int greenColor = Random.nextInt(255);
 		int blueColor = Random.nextInt(255);
-		
+
 		return CssColor.make(redColor, greenColor, blueColor);
 	}
-	
+
 	/**
 	 * Method generate random color with alpha transparency
 	 */
@@ -144,20 +144,20 @@ public final class ApplicationUtils {
 		int redColor = Random.nextInt(255);
 		int greenColor = Random.nextInt(255);
 		int blueColor = Random.nextInt(255);
-		
-		return CssColor.make("rgba(" + redColor + ", " + greenColor + "," + 
+
+		return CssColor.make("rgba(" + redColor + ", " + greenColor + "," +
 					blueColor + ", " + Random.nextDouble() + ")");
-	} 
-	
+	}
+
 	/**
 	 * Sets whether cursor is visible.
-	 * 
+	 *
 	 * @param visible true to show the default cursor, false to hide it
 	 */
 	public static void setVisibleCursor(boolean visible) {
 		DOM.setStyleAttribute(RootPanel.get().getElement(), "cursor", visible ? "default" : "none");
 	}
-	
+
 	/**
 	 * draw pause label
 	 */
@@ -168,10 +168,10 @@ public final class ApplicationUtils {
 			context2D.fillText("PAUSE...", 545, 18);
 		}
 	}
-	
+
 	/**
 	 * Draw ellipse.
-	 * 
+	 *
 	 * @param centerX of the figure
 	 * @param centerY of the figure
 	 * @param width the width of the rectangle
@@ -183,7 +183,7 @@ public final class ApplicationUtils {
 			context2D.beginPath();
 			// move to the top center of the ellipse
 			context2D.moveTo(centerX, centerY - height / 2);
-	
+
 			context2D.bezierCurveTo(
 		        centerX + width / 2, centerY - height / 2,
 		        centerX + width / 2, centerY + height / 2,
@@ -194,17 +194,17 @@ public final class ApplicationUtils {
 		        centerX - width / 2, centerY - height / 2,
 		        centerX, centerY - height / 2
 		    );
-	
+
 			context2D.setFillStyle(INFO_SHAPE_WRAPPER_COLOR);
 			context2D.fill();
 			context2D.closePath();
 			context2D.stroke();
 		}
 	}
-	
+
 	/**
 	 * Draw shapes info wrapper.
-	 * 
+	 *
 	 * @param context used to draw on a canvas
 	 */
 	public static void drawInfoWrapper(Context2d context) {
@@ -222,38 +222,38 @@ public final class ApplicationUtils {
 		context.fill();
 		context.stroke();
 	}
-	
+
 	/**
 	 * Draw initial background for the game.
-	 * 
+	 *
 	 * @param context used to draw on a canvas
 	 */
 	public static void drawStartPointBackground(Context2d context) {
 		// draw image from the bundle
-		/*ImageElement background = 
+		/*ImageElement background =
 				ImageElement.as(new Image(injector.spaceShooterBundle().galaxy().getSafeUri()).getElement());
 		context.drawImage(background, 0, 0); */
-		
+
 		context2D = context;
-		
+
 		// create gradients
 		CanvasGradient gradient = context.createLinearGradient(0, 0, 0, CANVAS_HEIGHT);
-		  
+
 		gradient.addColorStop(getRandomDoubleNumberBeatween(0.1, 0.3), getRandomRGBColor().value());
 		gradient.addColorStop(1, getRandomRGBAColor().value());
-		 
+
 		// assign gradients to fill
 		context.setFillStyle(gradient);
-		   
+
 		// draw filled rectangle on a canvas
 		context.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
-		
+
 		drawStellarSky(context);
 	}
-	
+
 	/**
 	 * Draw stellar sky on canvas.
-	 * 
+	 *
 	 * @param context used to draw on a canvas
 	 */
 	public static void drawStellarSky(Context2d context) {
@@ -267,10 +267,10 @@ public final class ApplicationUtils {
 			context.restore();
 		}
 	}
-	
+
 	/**
 	 * Draw a star.
-	 * 
+	 *
 	 * @param context used to draw on a canvas
 	 * @param radius coordinate for new position
 	 */
@@ -286,15 +286,15 @@ public final class ApplicationUtils {
 		context.fill();
 		context.restore();
 	}
-	
+
 	/**
 	 * Draw game background image.
-	 * 
+	 *
 	 * @param context used to draw on a canvas
 	 */
 	public static void drawDynamicBackground(Context2d context) {
 		try {
-			ImageElement background = 
+			ImageElement background =
 					ImageElement.as(new Image(injector.spaceShooterBundle().spacesky().getSafeUri()).getElement());
 			CanvasPattern pattern = context.createPattern(background, Repetition.REPEAT);
 			context.setFillStyle(pattern);
@@ -304,10 +304,10 @@ public final class ApplicationUtils {
 			//exception.printStackTrace();
 		}
 	}
-	
+
 	/**
 	 * Draws filled text.
-	 * 
+	 *
 	 * @param context used to draw on a canvas
 	 * @param position of the element
 	 * @param text the text as a String
@@ -326,10 +326,10 @@ public final class ApplicationUtils {
 			context.fillText(text.concat(bulletPosition.toString()), x, y);
 		}
 	}
-	
+
 	/**
 	 * Draw shield for spaceship.
-	 * 
+	 *
 	 * @param context used to draw on a canvas
 	 * @param position of the element
 	 */
@@ -345,3 +345,4 @@ public final class ApplicationUtils {
         context.setGlobalAlpha(1);
 	}
 }
+

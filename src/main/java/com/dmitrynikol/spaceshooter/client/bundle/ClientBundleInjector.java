@@ -4,7 +4,7 @@ import com.google.gwt.inject.client.GinModules;
 import com.google.gwt.inject.client.Ginjector;
 
 /**
- * 
+ *
  * @author Dmitry Nikolaenko
  *
  */
@@ -12,3 +12,4 @@ import com.google.gwt.inject.client.Ginjector;
 public interface ClientBundleInjector extends Ginjector {
 	SpaceShooterClientBundle spaceShooterBundle();
 }
+

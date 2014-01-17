@@ -5,11 +5,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Enumeration that represents an objects that instantly benefit or 
+ * Enumeration that represents an objects that instantly benefit or
  * add extra abilities to the game character as a game mechanic.
- * 
+ *
  * @author Dmitry Nikolaenko
- * 
+ *
  */
 public enum Powerup {
 
@@ -37,27 +37,28 @@ public enum Powerup {
 	 * Pick this up and you get one more health back instantly
 	 */
 	MEDIKIT(4);
-	
-	private static final Map<Integer, Powerup> lookup = 
+
+	private static final Map<Integer, Powerup> lookup =
 			new HashMap<Integer, Powerup>();
-	
+
 	static {
 		for (Powerup power : EnumSet.allOf(Powerup.class)) {
 			lookup.put(power.getType(), power);
-		} 
+		}
 	}
-	
+
 	private int type;
-	
+
 	private Powerup(int type) {
-		this.type = type; 
+		this.type = type;
 	}
-	
+
 	public int getType() {
 		return type;
 	}
-	
+
 	public static Powerup get(int code) {
 		return lookup.get(code);
 	}
 }
+

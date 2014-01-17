@@ -14,14 +14,14 @@ import com.google.gwt.user.client.ui.Image;
 
 /**
  * This is the Spaceship game element.
- * 
+ *
  * @author Dmitry Nikolaenko
- * 
+ *
  */
 public class Spaceship extends GameComponent {
 
 	private final ClientBundleInjector injector = GWT.create(ClientBundleInjector.class);
-	
+
 	private int health;
 	private int score;
 	private int bestScore;
@@ -30,12 +30,12 @@ public class Spaceship extends GameComponent {
 	private Position2D position;
 	private Size2D size;
 	private Bullet bullet = null;
-	
+
 	public Spaceship() {
 		this(ApplicationUtils.DEFAULT_X_COORD, ApplicationUtils.DEFAULT_Y_COORD);
 	}
-	
-	
+
+
 	public Spaceship(int xCoord, int yCoord) {
 		position = new Position2D(xCoord, yCoord);
 		initComponent();
@@ -53,13 +53,13 @@ public class Spaceship extends GameComponent {
 				bullet.render(context);
 				bullet.update(0.5f);
 			}
-			
+
 			if (ApplicationContext.isShieldEnabled()) {
 				ApplicationUtils.drawShield(context, position);
 			}
-		
+
 			if (ApplicationContext.isPositionEnabled()) {
-				ApplicationUtils.drawElementPosition(context, position, "Spaceship: ", 
+				ApplicationUtils.drawElementPosition(context, position, "Spaceship: ",
 						position.getX() - 20, position.getY() + image.getWidth() + 10);
 			}
 		}
@@ -82,26 +82,26 @@ public class Spaceship extends GameComponent {
 		size = new Size2D(image.getWidth(), image.getHeight());
 		setSize(size);
 	}
-	
+
 	@Override
 	public void injectImage(ImageElement image) {
 		this.image = image;
 	}
-	
+
 	@Override
 	public void destroy() {
 		bestScore = Math.max(score, bestScore);
 		ApplicationUtils.setCookie("score", String.valueOf(bestScore));
 	}
-	
+
 	public void setHealth(int health) {
 		this.health = health;
 	}
-	
+
 	public int getHealth() {
 		return health;
 	}
-	
+
 	public void setBestScore(int bestScore) {
 		this.bestScore = bestScore;
 	}
@@ -113,14 +113,15 @@ public class Spaceship extends GameComponent {
 	public void setScore(int score) {
 		this.score = score;
 	}
-	
+
 	public void shot(Position2D position) {
 		bullet = new Bullet();
 		bullet.updateBullet(bullet.getBulletType(score));
 		bullet.setPosition(position);
 	}
-	
+
 	public Bullet getBullet() {
 		return bullet;
 	}
 }
+

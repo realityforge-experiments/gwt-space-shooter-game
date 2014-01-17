@@ -16,27 +16,27 @@ import com.google.gwt.user.client.ui.Image;
 
 /**
  * This is the powerup game element.
- * 
+ *
  * @author Dmitry Nikolaenko
  *
  */
 public class PowerupElement extends GameComponent {
-	
+
 	private boolean isAlive;
-	
+
 	private ImageElement image;
 	private Position2D position;
 	private Size2D size;
-	
+
 	private Powerup powerup;
-	
+
 	private final ClientBundleInjector injector = GWT.create(ClientBundleInjector.class);
 	private final SpaceShooterClientBundle gameResourceBundle = injector.spaceShooterBundle();
-	
+
 	public PowerupElement() {
 		this(Powerup.SHIELD);
 	}
-	
+
 	public PowerupElement(Powerup powerup) {
 		this.powerup = powerup;
 		initComponent();
@@ -56,9 +56,9 @@ public class PowerupElement extends GameComponent {
 	public void render(Context2d context) {
 		if (isAlive()) {
 			context.drawImage(image, position.getX(), position.getY());
-			
+
 			if (ApplicationContext.isPositionEnabled()) {
-				ApplicationUtils.drawElementPosition(context, position, powerup.name().concat(": "), 
+				ApplicationUtils.drawElementPosition(context, position, powerup.name().concat(": "),
 					position.getX() - 15, position.getY() + 40);
 			}
 		}
@@ -82,18 +82,18 @@ public class PowerupElement extends GameComponent {
 	public void injectImage(ImageElement image) {
 		this.image = image;
 	}
-	
+
 	/**
 	 * update the position of powerup element
 	 */
 	private void updatePowerupElementPosition() {
-		int randomNumber = 
-				ApplicationUtils.getRandomIntegerNumberBetween(0, ApplicationUtils.MAXIMUM_WIDTH_BOUNDARY - 
+		int randomNumber =
+				ApplicationUtils.getRandomIntegerNumberBetween(0, ApplicationUtils.MAXIMUM_WIDTH_BOUNDARY -
 						getSize().getWidth());
 		this.position = new Position2D(randomNumber, 0);
 		setPosition(position);
 	}
-	
+
 	/**
 	 * update powerup for element
 	 */
@@ -121,13 +121,14 @@ public class PowerupElement extends GameComponent {
 		}
 		image = ImageElement.as(new Image(uri).getElement());
 	}
-	
+
 	/**
 	 * Method return powerups type
-	 * 
+	 *
 	 * @return powerups type
 	 */
 	public Powerup getPowerupType() {
 		return powerup;
 	}
 }
+

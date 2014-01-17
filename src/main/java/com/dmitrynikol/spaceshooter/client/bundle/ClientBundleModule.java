@@ -3,7 +3,7 @@ package com.dmitrynikol.spaceshooter.client.bundle;
 import com.google.gwt.inject.client.AbstractGinModule;
 
 /**
- * 
+ *
  * @author Dmitry Nikolaenko
  *
  */
@@ -13,3 +13,4 @@ public class ClientBundleModule extends AbstractGinModule {
 		bind(SpaceShooterClientBundle.class).to(GeneralClientBundle.class);
 	}
 }
+

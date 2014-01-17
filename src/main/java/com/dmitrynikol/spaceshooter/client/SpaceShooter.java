@@ -35,66 +35,66 @@ import com.google.gwt.user.client.ui.RootPanel;
 
 /**
  * Entry point classes define <code>onModuleLoad()</code>.
- * 
+ *
  * @author Dmitry Nikolaenko
- * 
+ *
  */
 public class SpaceShooter implements EntryPoint {
-	
+
 	private Canvas canvas;
 	private Context2d context;
-	
+
 	private Timer timer;
 	private FrameRate frameRate;
-	
+
 	/**
 	 * start point of rendering object
 	 */
 	private int currentElapsedPoint;
-	
+
 	/**
 	 * last elapsed point of rendering object
 	 */
 	private int lastElapsedPoint;
-	
+
 	private Duration duration;
-	
+
 	private Anchor start;
 	private Element span;
-	
+
 	private Spaceship spaceship;
 	private List<PowerupElement> powerups;
 	private List<Asteroid> asteroids;
-	
+
 	private int score;
 	private int oldScore;
-	
+
 	private Powerup lastPowerup;
 	private float timerPoint;
-	
+
 	private GameKeyHandler keyHandler;
 	private GameMouseHandler mouseHandler;
-	
+
 	public void onModuleLoad() {
 		canvas = Canvas.createIfSupported();
 		if (canvas == null) {
 			RootPanel.get().add(new Label(ApplicationUtils.CANVAS_NOT_SUPPORTED));
 			return;
 		}
-		
+
 		canvas.setWidth(ApplicationUtils.CANVAS_WIDTH + Unit.PX.getType());
 		canvas.setCoordinateSpaceWidth(ApplicationUtils.CANVAS_WIDTH);
 		canvas.setHeight(ApplicationUtils.CANVAS_HEIGHT + Unit.PX.getType());
 		canvas.setCoordinateSpaceHeight(ApplicationUtils.CANVAS_HEIGHT);
-		
+
 		RootPanel.get("instructions").setVisible(true);
-		RootPanel.get("loading").setVisible(false); 
-		
+		RootPanel.get("loading").setVisible(false);
+
 		RootPanel.get().add(canvas);
-		
+
 		context = canvas.getContext2d();
 		frameRate = new FrameRate();
-		
+
 		start = new Anchor();
 		span = DOM.createSpan();
 		span.setInnerText("Play Game");
@@ -118,51 +118,51 @@ public class SpaceShooter implements EntryPoint {
 				RootPanel.get("instructions").setVisible(false);
 			}
 		});
-		
+
 		ApplicationUtils.drawStartPointBackground(context);
 		RootPanel.get().add(start);
-		
+
 		spaceship = new Spaceship(ApplicationUtils.CANVAS_WIDTH / 2, ApplicationUtils.CANVAS_HEIGHT / 5 * 4);
-		
+
 		duration = new Duration();
 		lastElapsedPoint = duration.elapsedMillis();
-		
+
 		timer = new Timer() {
 			@Override
 			public void run() {
 				update();
 			}
 		};
-		
+
 		initializeCanvasHandlers();
-		
-		// register sound 
+
+		// register sound
 		SoundManagerFactory.getSoundManager().registerSound(SoundManagerFactory.SoundResource.FREZEE);
 		SoundManagerFactory.getSoundManager().registerSound(SoundManagerFactory.SoundResource.SHIELD);
 		SoundManagerFactory.getSoundManager().registerSound(SoundManagerFactory.SoundResource.BUMP);
-		SoundManagerFactory.getSoundManager().registerSound(SoundManagerFactory.SoundResource.GAME_THEME, 
+		SoundManagerFactory.getSoundManager().registerSound(SoundManagerFactory.SoundResource.GAME_THEME,
 				Sound.MIME_TYPE_AUDIO_OGG_VORBIS);
-		SoundManagerFactory.getSoundManager().registerSound(SoundManagerFactory.SoundResource.THE_END, 
+		SoundManagerFactory.getSoundManager().registerSound(SoundManagerFactory.SoundResource.THE_END,
 				Sound.MIME_TYPE_AUDIO_OGG_VORBIS);
-		
+
 		// and start background sound
 		SoundManagerFactory.getSoundManager().setLoop(SoundManagerFactory.SoundResource.GAME_THEME, true);
 	}
-	
+
 	/**
 	 * add key and mouse handler to the canvas
 	 */
 	private void initializeCanvasHandlers() {
 		keyHandler = new GameKeyHandler(spaceship);
 		mouseHandler = new GameMouseHandler(spaceship);
-		
+
 		canvas.addKeyDownHandler(keyHandler);
 		canvas.addMouseDownHandler(mouseHandler);
 		canvas.addMouseMoveHandler(mouseHandler);
-		
+
 		keyHandler.setTimer(timer);
 	}
-	
+
 	/**
 	 * reset all parameters in application
 	 */
@@ -176,14 +176,14 @@ public class SpaceShooter implements EntryPoint {
 		asteroids = new ArrayList<Asteroid>();
 		asteroids.addAll(AsteroidGenerator.getAllAsteroidList());
 		powerups = new ArrayList<PowerupElement>();
-		
+
 		for (Asteroid asteroid : asteroids) {
 			asteroid.destroy();
 		}
-		
+
 		keyHandler.setTimer(timer);
 	}
-	
+
 	/**
 	 * update current state of components and game info on canvas
 	 */
@@ -191,22 +191,22 @@ public class SpaceShooter implements EntryPoint {
 		currentElapsedPoint  = duration.elapsedMillis();
 		float delta = (currentElapsedPoint  - lastElapsedPoint) / 1000.0f;
 		lastElapsedPoint = currentElapsedPoint;
-		
+
 		frameRate.addFrame(delta);
-		
-		// draw permanent background color 
+
+		// draw permanent background color
 		//context.setFillStyle(ApplicationUtils.CANVAS_COLOR);
 		//context.fillRect(0, 0, ApplicationUtils.CANVAS_WIDTH, ApplicationUtils.CANVAS_HEIGHT);
-		
+
 		ApplicationUtils.drawDynamicBackground(context);
-		
+
 		context.setFillStyle(ApplicationUtils.TEXT_COLOR);
 		context.fillText("Score: ".concat(String.valueOf(score)), 16, 28);
 		context.fillText("Best score: ".concat(String.valueOf(spaceship.getBestScore())), 16, 38);
 		context.fillText("Health: ".concat(String.valueOf(spaceship.getHealth())), 16, 48);
 		context.fillText("Total time: ".concat(String.valueOf((int) frameRate.getTotalElapsedTime())).concat(" sec"), 16, 58);
 		context.fillText("FPS: ".concat(String.valueOf(frameRate.getCurrentFrameRate())), 16, 68);
-			
+
 		int indexCoordinate = 0;
 		for (Map.Entry<Powerup, Float> entry : ApplicationContext.getTempPowerups().entrySet()) {
 			Powerup pow = entry.getKey();
@@ -217,37 +217,37 @@ public class SpaceShooter implements EntryPoint {
 				context.fillText(pow.name().concat(": ").concat(String.valueOf(stopwatchTimer)), 6, 108 + indexCoordinate * 20);
 			}
 		}
-		
+
 		ApplicationUtils.drawInfoWrapper(context);
-		
+
 		spaceship.render(context);
-		
+
 		if (spaceship.getHealth() <= 0) {
 			// switch on mute mode and stop all sound
 			SoundManagerFactory.getSoundManager().setMute(true);
 			// stopped game process
 			timer.cancel();
-			// disable the PAUSE key 
+			// disable the PAUSE key
 			keyHandler.setTimer(null);
 			spaceship.destroy();
 			span.setInnerText("Play Again");
 			start.setVisible(true);
 			ApplicationUtils.setVisibleCursor(true);
-			
+
 			// switch off mute mode
 			SoundManagerFactory.getSoundManager().setMute(false);
 			SoundManagerFactory.getSoundManager().playSound(SoundManagerFactory.SoundResource.THE_END);
 		}
-		
+
 		oldScore = score;
-		
+
 		// "rendering" (displaying) an asteroids and bullet elements
 		for (Asteroid asteroid : asteroids) {
 			asteroid.update(delta);
 			asteroid.render(context);
-			
+
 			Bullet bullet = spaceship.getBullet();
-			
+
 			// check collision between bullet and asteroids
 			if (bullet != null) {
 				if (ApplicationUtils.collision(bullet.getPosition(), asteroid.getPosition(), Accuracy.LEVEL1)) {
@@ -258,27 +258,27 @@ public class SpaceShooter implements EntryPoint {
 					spaceship.setScore(score);
 				}
 			}
-			
+
 			// check collision between asteroids and spaceship
-			if (!ApplicationContext.isShieldEnabled() && 
+			if (!ApplicationContext.isShieldEnabled() &&
 					ApplicationUtils.collision(spaceship.getPosition(), asteroid.getPosition(), Accuracy.LEVEL3)) {
 				asteroid.destroy();
 				spaceship.setHealth(spaceship.getHealth() - 1);
 				SoundManagerFactory.getSoundManager().playSound(SoundManagerFactory.SoundResource.BUMP);
 			}
 		}
-		
+
 		// "rendering" (displaying) a powerup elements
 		for (PowerupElement powerup : new ArrayList<PowerupElement>(powerups)) {
 			powerup.update(delta);
 			powerup.render(context);
-		
+
 			// check collision between powerup element and spaceship
 			if (ApplicationUtils.collision(spaceship.getPosition(), powerup.getPosition(), Accuracy.LEVEL3)) {
 				powerup.destroy();
 				powerups.remove(powerup);
 				lastPowerup = powerup.getPowerupType();
-				
+
 				if (!lastPowerup.equals(Powerup.MEDIKIT)) {
 					timerPoint = frameRate.getTotalElapsedTime() + 5;
 					if (!ApplicationContext.getTempPowerups().containsKey(lastPowerup)) {
@@ -288,16 +288,16 @@ public class SpaceShooter implements EntryPoint {
 				} else {
 					spaceship.setHealth(spaceship.getHealth() + 1);
 				}
-				
+
 				SoundManagerFactory.getSoundManager().playSound(SoundManagerFactory.SoundResource.SHIELD);
 			}
-			
+
 			// if the object is out of canvas scope then just remove it
 			if (powerup.getPosition().getY() > ApplicationUtils.CANVAS_HEIGHT) {
 				powerups.remove(powerup);
 			}
 		}
-		
+
 		// increase the number of asteroids and add new powerup element
 		if (score > 0 && oldScore != score) {
 			if (score % 3 == 0) {
@@ -312,3 +312,4 @@ public class SpaceShooter implements EntryPoint {
 		}
 	}
 }
+

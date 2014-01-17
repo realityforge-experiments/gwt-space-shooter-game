@@ -12,12 +12,12 @@ import com.google.gwt.user.client.Timer;
 
 /**
  * Game key handler.
- * 
+ *
  * @author Dmitry Nikolaenko
  *
  */
 public class GameKeyHandler implements KeyDownHandler {
-	
+
 	private Spaceship spaceship;
 	private Timer timer;
 	private boolean pause;
@@ -25,7 +25,7 @@ public class GameKeyHandler implements KeyDownHandler {
 
 	private Position2D currentPosition;
 	private Size2D elementSize;
-	
+
 	public GameKeyHandler(Spaceship spaceship) {
 		this.spaceship = spaceship;
 		pause = false;
@@ -37,14 +37,14 @@ public class GameKeyHandler implements KeyDownHandler {
 		int key = event.getNativeKeyCode();
 		currentPosition = spaceship.getPosition();
 		elementSize = spaceship.getSize();
-		
+
 		switch(key) {
-			case KeyCodes.KEY_UP: 
+			case KeyCodes.KEY_UP:
 				currentPosition.setY(currentPosition.getY() - ApplicationUtils.DELTA);
 				break;
 			case KeyCodes.KEY_DOWN:
 				currentPosition.setY(currentPosition.getY() + ApplicationUtils.DELTA);
-				break;	
+				break;
 			case KeyCodes.KEY_LEFT:
 				currentPosition.setX(currentPosition.getX() - ApplicationUtils.DELTA);
 				break;
@@ -52,7 +52,7 @@ public class GameKeyHandler implements KeyDownHandler {
 				currentPosition.setX(currentPosition.getX() + ApplicationUtils.DELTA);
 				break;
 			case KeyCodes.KEY_SHIFT:
-				Position2D bulletPosition = 
+				Position2D bulletPosition =
 					new Position2D(currentPosition.getX() + elementSize.width / 2, currentPosition.getY() - 15);
 				spaceship.shot(bulletPosition);
 				break;
@@ -69,7 +69,7 @@ public class GameKeyHandler implements KeyDownHandler {
 						timer.cancel();
 						ApplicationUtils.setVisibleCursor(true);
 						ApplicationUtils.drawPauseLabel();
-					} 
+					}
 					pause = !pause;
 					//DOM.getElementById("start").getStyle().setDisplay(Display.INLINE);
 				}
@@ -77,8 +77,9 @@ public class GameKeyHandler implements KeyDownHandler {
 				break;
 		}
 	}
-	
+
 	public void setTimer(Timer timer) {
 		this.timer = timer;
 	}
 }
+
