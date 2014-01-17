@@ -13,7 +13,7 @@ public interface SpaceShooterClientBundle
   extends ClientBundle
 {
 
-  public interface StyleResources
+  interface StyleResources
     extends CssResource
   {
     @ClassName( "start" )
@@ -59,17 +59,17 @@ public interface SpaceShooterClientBundle
   ImageResource medikit();
 
   @Source( "sound/bump.wav" )
-  public DataResource bumpSound();
+  DataResource bumpSound();
 
   @Source( "sound/shield.wav" )
-  public DataResource shieldSound();
+  DataResource shieldSound();
 
   @Source( "sound/frezee.wav" )
-  public DataResource frezeeSound();
+  DataResource frezeeSound();
 
   @Source( "sound/the_end.ogg" )
-  public DataResource theEndSound();
+  DataResource theEndSound();
 
   @Source( "sound/game_theme.ogg" )
-  public DataResource gameThemeSound();
+  DataResource gameThemeSound();
 }
