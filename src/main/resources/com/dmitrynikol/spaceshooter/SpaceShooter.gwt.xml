@@ -13,10 +13,6 @@
   <extend-configuration-property name="appcache_static_files" value="SpaceShooter.html"/>
   <extend-configuration-property name="appcache_static_files" value="SpaceShooter.css"/>
 
-  <!-- TODO: These next two lines do not work? -->
-  <extend-configuration-property name="appcache_static_files" value="images/*"/>
-  <extend-configuration-property name="appcache_static_files" value="css/*"/>
-
   <!-- Specify the app entry point class.                         -->
   <entry-point class='com.dmitrynikol.spaceshooter.client.SpaceShooter'/>
   
