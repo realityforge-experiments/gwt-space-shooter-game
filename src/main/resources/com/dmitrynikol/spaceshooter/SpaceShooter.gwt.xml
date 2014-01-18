@@ -13,9 +13,5 @@
   <extend-configuration-property name="appcache_static_files" value="SpaceShooter.html"/>
   <extend-configuration-property name="appcache_static_files" value="SpaceShooter.css"/>
 
-  <!-- Specify the app entry point class.                         -->
   <entry-point class='com.dmitrynikol.spaceshooter.client.SpaceShooter'/>
-  
-  <!-- Specify the paths for translatable code                    -->
-  <source path='client'/>
 </module>
