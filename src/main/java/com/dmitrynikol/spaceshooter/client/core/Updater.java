@@ -7,6 +7,6 @@ package com.dmitrynikol.spaceshooter.client.core;
  */
 public interface Updater
 {
-  public void update( float delta );
+  void update( float delta );
 }
 

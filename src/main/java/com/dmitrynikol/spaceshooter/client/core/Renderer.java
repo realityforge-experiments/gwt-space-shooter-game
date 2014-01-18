@@ -9,6 +9,6 @@ import com.google.gwt.canvas.dom.client.Context2d;
  */
 public interface Renderer
 {
-  public void render( Context2d context );
+  void render( Context2d context );
 }
 

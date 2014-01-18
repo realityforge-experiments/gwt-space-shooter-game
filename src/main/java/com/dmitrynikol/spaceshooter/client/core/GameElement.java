@@ -5,8 +5,8 @@ package com.dmitrynikol.spaceshooter.client.core;
  */
 public interface GameElement
 {
-  public boolean isAlive();
+  boolean isAlive();
 
-  public void destroy();
+  void destroy();
 }
 
