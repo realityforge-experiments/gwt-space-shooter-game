@@ -12,34 +12,38 @@ import com.google.gwt.event.dom.client.MouseMoveHandler;
  * Game mouse handler.
  *
  * @author Dmitry Nikolaenko
- *
  */
-public class GameMouseHandler implements MouseDownHandler, MouseMoveHandler {
+public class GameMouseHandler
+  implements MouseDownHandler, MouseMoveHandler
+{
 
-	private Spaceship spaceship;
-	private Position2D currentPosition;
-	private Size2D elementSize;
+  private Spaceship spaceship;
+  private Position2D currentPosition;
+  private Size2D elementSize;
 
-	public GameMouseHandler(Spaceship element) {
-		this.spaceship = element;
-	}
+  public GameMouseHandler( Spaceship element )
+  {
+    this.spaceship = element;
+  }
 
-	@Override
-	public void onMouseMove(MouseMoveEvent event) {
-		currentPosition = spaceship.getPosition();
-		elementSize = spaceship.getSize();
+  @Override
+  public void onMouseMove( MouseMoveEvent event )
+  {
+    currentPosition = spaceship.getPosition();
+    elementSize = spaceship.getSize();
 
-		currentPosition.setX(event.getX());
-		currentPosition.setY(event.getY());
-		spaceship.setPosition(currentPosition);
-	}
+    currentPosition.setX( event.getX() );
+    currentPosition.setY( event.getY() );
+    spaceship.setPosition( currentPosition );
+  }
 
-	@Override
-	public void onMouseDown(MouseDownEvent event) {
-		Position2D bulletPosition =
-				new Position2D(currentPosition.getX() + (elementSize.width == 0 ? 24 : elementSize.width / 2),
-						currentPosition.getY() - 15);
-		spaceship.shot(bulletPosition);
-	}
+  @Override
+  public void onMouseDown( MouseDownEvent event )
+  {
+    Position2D bulletPosition =
+      new Position2D( currentPosition.getX() + ( elementSize.width == 0 ? 24 : elementSize.width / 2 ),
+                      currentPosition.getY() - 15 );
+    spaceship.shot( bulletPosition );
+  }
 }
 
