@@ -48,11 +48,6 @@ public class SpaceShooter
   private FrameRate frameRate;
 
   /**
-   * start point of rendering object
-   */
-  private int currentElapsedPoint;
-
-  /**
    * last elapsed point of rendering object
    */
   private int lastElapsedPoint;
@@ -69,11 +64,9 @@ public class SpaceShooter
   private int score;
   private int oldScore;
 
-  private Powerup lastPowerup;
   private float timerPoint;
 
   private GameKeyHandler keyHandler;
-  private GameMouseHandler mouseHandler;
 
   public void onModuleLoad()
   {
@@ -161,7 +154,7 @@ public class SpaceShooter
   private void initializeCanvasHandlers()
   {
     keyHandler = new GameKeyHandler( spaceship );
-    mouseHandler = new GameMouseHandler( spaceship );
+    final GameMouseHandler mouseHandler = new GameMouseHandler( spaceship );
 
     canvas.addKeyDownHandler( keyHandler );
     canvas.addMouseDownHandler( mouseHandler );
@@ -198,7 +191,10 @@ public class SpaceShooter
    */
   private void update()
   {
-    currentElapsedPoint = duration.elapsedMillis();
+    /*
+    start point of rendering object
+   */
+    final int currentElapsedPoint = duration.elapsedMillis();
     float delta = ( currentElapsedPoint - lastElapsedPoint ) / 1000.0f;
     lastElapsedPoint = currentElapsedPoint;
 
@@ -298,7 +294,7 @@ public class SpaceShooter
       {
         powerup.destroy();
         powerups.remove( powerup );
-        lastPowerup = powerup.getPowerupType();
+        final Powerup lastPowerup = powerup.getPowerupType();
 
         if ( !lastPowerup.equals( Powerup.MEDIKIT ) )
         {
