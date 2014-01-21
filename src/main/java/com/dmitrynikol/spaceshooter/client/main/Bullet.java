@@ -2,13 +2,10 @@ package com.dmitrynikol.spaceshooter.client.main;
 
 import com.dmitrynikol.spaceshooter.client.core.GameComponent;
 import com.dmitrynikol.spaceshooter.client.math.Position2D;
-import com.dmitrynikol.spaceshooter.client.math.Size2D;
 import com.dmitrynikol.spaceshooter.client.util.ApplicationContext;
 import com.dmitrynikol.spaceshooter.client.util.ApplicationUtils;
 import com.google.gwt.canvas.dom.client.CanvasGradient;
 import com.google.gwt.canvas.dom.client.Context2d;
-import com.google.gwt.canvas.dom.client.CssColor;
-import com.google.gwt.dom.client.ImageElement;
 
 /**
  * This is the Bullet game element.
@@ -38,11 +35,6 @@ public class Bullet
       this.color3 = color3;
     }
 
-    private Type( double middleStopColor, CssColor color1, CssColor color2, CssColor color3 )
-    {
-      this( middleStopColor, color1.value(), color2.value(), color3.value() );
-    }
-
     public void updateGradientColors( CanvasGradient gradient )
     {
       gradient.addColorStop( 0, color1 );
@@ -53,9 +45,7 @@ public class Bullet
 
   private boolean isAlive;
   private int acceleration;
-  private ImageElement image;
   private Position2D position;
-  private Size2D size;
   private Type type;
 
   public Bullet()
