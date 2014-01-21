@@ -82,7 +82,6 @@ public class Asteroid
   {
     isAlive = true;
     updateAsteroidSurface();
-    //image = ImageElement.as(new Image(injector.spaceShooterBundle().asteroid1().getSafeUri()).getElement());
     setSize( new Size2D( image.getWidth(), image.getHeight() ) );
     updateAsteroidPosition();
     updateAsteroidAcceleration();
