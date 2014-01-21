@@ -21,13 +21,11 @@ public class GameKeyHandler
   private Spaceship spaceship;
   private Timer timer;
   private boolean pause;
-  private boolean drawingPosition;
+  private boolean drawingPosition = true;
 
   public GameKeyHandler( final Spaceship spaceship )
   {
     this.spaceship = spaceship;
-    pause = false;
-    drawingPosition = true;
   }
 
   @Override
