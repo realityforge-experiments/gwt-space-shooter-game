@@ -19,7 +19,6 @@ public class ApplicationContext
   private static boolean shieldEnabled = false;
   private static boolean reflexBoostEnabled = false;
   private static int scoreIncrease = 1;
-  private static Timer timer;
   private static Map<Powerup, Float> temporaryPowerups = new HashMap<Powerup, Float>();
 
   /**
@@ -44,7 +43,7 @@ public class ApplicationContext
    *
    * @param enabled <code>true</code> to enable the drawing position, <code>false</code> to disable it
    */
-  public static void setPositionEnabled( boolean enabled )
+  public static void setPositionEnabled( final boolean enabled )
   {
     positionEnabled = enabled;
   }
@@ -64,7 +63,7 @@ public class ApplicationContext
    *
    * @param freezeEnabled <code>true</code> to enable freeze powerup, otherwise disable
    */
-  public static void setFreezeEnabled( boolean freezeEnabled )
+  public static void setFreezeEnabled( final boolean freezeEnabled )
   {
     ApplicationContext.freezeEnabled = freezeEnabled;
   }
@@ -84,7 +83,7 @@ public class ApplicationContext
    *
    * @param enabled <code>true</code> to enable shield powerup, otherwise disable
    */
-  public static void setShieldEnabled( boolean enabled )
+  public static void setShieldEnabled( final boolean enabled )
   {
     shieldEnabled = enabled;
   }
@@ -104,15 +103,13 @@ public class ApplicationContext
    *
    * @param reflexBoostEnabled <code>true</code> to enable reflex boost powerup, otherwise disable
    */
-  public static void setReflexBoostEnabled( boolean reflexBoostEnabled )
+  public static void setReflexBoostEnabled( final boolean reflexBoostEnabled )
   {
     ApplicationContext.reflexBoostEnabled = reflexBoostEnabled;
   }
 
   /**
    * Get game score.
-   *
-   * @return score
    */
   public static int getScoreIncrease()
   {
@@ -121,8 +118,6 @@ public class ApplicationContext
 
   /**
    * Set game score.
-   *
-   * @param scoreIncrease
    */
   public static void setScoreIncrease( int scoreIncrease )
   {
@@ -142,10 +137,9 @@ public class ApplicationContext
   /**
    * Method run powerups for spaceship for a certain period.
    *
-   * @param spaceship
    * @param powerup   object that add extra abilities
    */
-  public static void runPowerups( Spaceship spaceship, final Powerup powerup )
+  public static void runPowerups( final Spaceship spaceship, final Powerup powerup )
   {
     switch ( powerup )
     {
@@ -168,8 +162,7 @@ public class ApplicationContext
         break;
     }
 
-
-    timer = new Timer()
+    final Timer timer = new Timer()
     {
       @Override
       public void run()

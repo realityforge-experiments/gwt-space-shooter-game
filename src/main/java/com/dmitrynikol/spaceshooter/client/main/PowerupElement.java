@@ -26,17 +26,11 @@ public class PowerupElement
 
   private ImageElement image;
   private Position2D position;
-  private Size2D size;
 
   private Powerup powerup;
 
   private final ClientBundleInjector injector = GWT.create( ClientBundleInjector.class );
   private final SpaceShooterClientBundle gameResourceBundle = injector.spaceShooterBundle();
-
-  public PowerupElement()
-  {
-    this( Powerup.SHIELD );
-  }
 
   public PowerupElement( Powerup powerup )
   {
@@ -57,7 +51,7 @@ public class PowerupElement
   }
 
   @Override
-  public void render( Context2d context )
+  public void render( final Context2d context )
   {
     if ( isAlive() )
     {
@@ -72,7 +66,7 @@ public class PowerupElement
   }
 
   @Override
-  public void update( float delta )
+  public void update( final float delta )
   {
     position.setY( position.getY() + 1 );
   }
@@ -82,8 +76,7 @@ public class PowerupElement
   {
     isAlive = true;
     updatePowerup();
-    size = new Size2D( image.getWidth(), image.getHeight() );
-    setSize( size );
+    setSize( new Size2D( image.getWidth(), image.getHeight() ) );
     updatePowerupElementPosition();
   }
 
@@ -92,7 +85,7 @@ public class PowerupElement
    */
   private void updatePowerupElementPosition()
   {
-    int randomNumber =
+    final int randomNumber =
       ApplicationUtils.getRandomIntegerNumberBetween( 0, ApplicationUtils.MAXIMUM_WIDTH_BOUNDARY -
                                                          getSize().getWidth() );
     this.position = new Position2D( randomNumber, 0 );
@@ -104,7 +97,7 @@ public class PowerupElement
    */
   private void updatePowerup()
   {
-    SafeUri uri = null;
+    final SafeUri uri;
     switch ( powerup.getType() )
     {
       case 0:

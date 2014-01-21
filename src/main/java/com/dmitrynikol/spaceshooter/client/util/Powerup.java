@@ -12,11 +12,6 @@ import java.util.Map;
  */
 public enum Powerup
 {
-
-  /**
-   * Bursts out a ring of bullets.
-   */
-  //FIRE_BLAST(0),
   /**
    * The asteroids are frozen for some time.
    */
@@ -38,20 +33,18 @@ public enum Powerup
    */
   MEDIKIT( 4 );
 
-  private static final Map<Integer, Powerup> lookup =
-    new HashMap<Integer, Powerup>();
-
+  private static final Map<Integer, Powerup> c_typeMap = new HashMap<Integer, Powerup>();
   static
   {
-    for ( Powerup power : EnumSet.allOf( Powerup.class ) )
+    for ( final Powerup power : EnumSet.allOf( Powerup.class ) )
     {
-      lookup.put( power.getType(), power );
+      c_typeMap.put( power.getType(), power );
     }
   }
 
   private int type;
 
-  private Powerup( int type )
+  private Powerup( final int type )
   {
     this.type = type;
   }
@@ -61,9 +54,9 @@ public enum Powerup
     return type;
   }
 
-  public static Powerup get( int code )
+  public static Powerup get( final int code )
   {
-    return lookup.get( code );
+    return c_typeMap.get( code );
   }
 }
 

@@ -11,21 +11,15 @@ import java.util.Map;
  */
 public class SoundManager
 {
-
-  private Map<SoundResource, SoundPlayer> soundMap;
+  private Map<SoundResource, SoundPlayer> soundMap = new HashMap<SoundResource, SoundPlayer>();
   private boolean mute = false;
-
-  public SoundManager()
-  {
-    soundMap = new HashMap<SoundResource, SoundPlayer>();
-  }
 
   /**
    * Register sound in sound system
    *
    * @param resource the enum of sound which will be registered
    */
-  public void registerSound( SoundResource resource )
+  public void registerSound( final SoundResource resource )
   {
     if ( !soundMap.containsKey( resource ) )
     {
@@ -39,7 +33,7 @@ public class SoundManager
    * @param resource the enum of sound which will be registered
    * @param mimeType MIME type of the new Sound object
    */
-  public void registerSound( SoundResource resource, String mimeType )
+  public void registerSound( final SoundResource resource, final String mimeType )
   {
     if ( !soundMap.containsKey( resource ) )
     {
@@ -48,34 +42,13 @@ public class SoundManager
   }
 
   /**
-   * Unregisters the sound
-   *
-   * @param resource in sound system
-   */
-  public void unregisteredSound( SoundResource resource )
-  {
-    soundMap.remove( resource ).stop();
-  }
-
-  /**
-   * Whether the sound with this key is registered.
-   *
-   * @param sound in sound system
-   * @return whether a sound is registered
-   */
-  public boolean isSoundRegistered( SoundResource sound )
-  {
-    return soundMap.containsKey( sound );
-  }
-
-  /**
    * Start playing the sound.
    *
    * @param sound in sound system
    */
-  public void playSound( SoundResource sound )
+  public void playSound( final SoundResource sound )
   {
-    if ( soundMap.containsKey( sound ) && mute == false )
+    if ( soundMap.containsKey( sound ) && !mute )
     {
       soundMap.get( sound ).play();
     }
@@ -86,7 +59,7 @@ public class SoundManager
    *
    * @param sound in sound system
    */
-  public void stopSound( SoundResource sound )
+  public void stopSound( final SoundResource sound )
   {
     if ( soundMap.containsKey( sound ) )
     {
@@ -99,7 +72,7 @@ public class SoundManager
    *
    * @param loop responsible for loop mode
    */
-  public void setLoop( SoundResource sound, boolean loop )
+  public void setLoop( final SoundResource sound, final boolean loop )
   {
     if ( soundMap.containsKey( sound ) )
     {

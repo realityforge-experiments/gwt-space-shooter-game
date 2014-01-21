@@ -27,7 +27,7 @@ public class Bullet
     private String color2;
     private String color3;
 
-    private Type( double middleStopColor, String color1, String color2, String color3 )
+    private Type( final double middleStopColor, final String color1, final String color2, final String color3 )
     {
       this.middleStopColor = middleStopColor;
       this.color1 = color1;
@@ -35,7 +35,7 @@ public class Bullet
       this.color3 = color3;
     }
 
-    public void updateGradientColors( CanvasGradient gradient )
+    public void updateGradientColors( final CanvasGradient gradient )
     {
       gradient.addColorStop( 0, color1 );
       gradient.addColorStop( middleStopColor, color2 );
@@ -53,7 +53,7 @@ public class Bullet
     this( Type.YELLOW_STAR );
   }
 
-  public Bullet( Type type )
+  public Bullet( final Type type )
   {
     this.type = type;
     initComponent();
@@ -66,7 +66,7 @@ public class Bullet
   }
 
   @Override
-  public void update( float delta )
+  public void update( final float delta )
   {
     position.setY( position.getY() - acceleration );
   }
@@ -78,7 +78,7 @@ public class Bullet
   }
 
   @Override
-  public void render( Context2d context )
+  public void render( final Context2d context )
   {
     position = getPosition();
     drawBullet( context );
@@ -91,9 +91,9 @@ public class Bullet
     isAlive = true;
   }
 
-  private void drawBullet( Context2d context )
+  private void drawBullet( final Context2d context )
   {
-    CanvasGradient gradient =
+    final CanvasGradient gradient =
       context.createRadialGradient( position.getX(), position.getY(), 3,
                                     position.getX(), position.getY(), 15 );
 
@@ -109,7 +109,7 @@ public class Bullet
     }
   }
 
-  public Type getBulletType( int score )
+  public Type getBulletType( final int score )
   {
     switch ( score % 16 )
     {
@@ -136,7 +136,6 @@ public class Bullet
       default:
         break;
     }
-
     return type;
   }
 

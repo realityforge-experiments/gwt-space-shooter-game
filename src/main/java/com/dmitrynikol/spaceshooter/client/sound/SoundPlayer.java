@@ -17,21 +17,10 @@ import com.allen_sauer.gwt.voices.client.handler.SoundLoadStateChangeEvent;
  */
 public class SoundPlayer
 {
-
-  /**
-   * MIME type of the Sound object
-   */
-  private String mimeType;
-
   /**
    * Current audio file
    */
   private Sound currentSound;
-
-  /**
-   * Controller class which allow to create Sound objects
-   */
-  private SoundController soundController;
 
   public SoundPlayer( final String uri )
   {
@@ -41,17 +30,18 @@ public class SoundPlayer
 
   public SoundPlayer( final String uri, final String mimeType )
   {
-    this.mimeType = mimeType;
+    /*
+    Controller class which allow to create Sound objects
+   */
+    final SoundController soundController = new SoundController();
 
-    soundController = new SoundController();
-
-    currentSound = soundController.createSound( this.mimeType, uri );
+    currentSound = soundController.createSound( mimeType, uri );
 
     // with the sound handler we know when the sound has loaded
     currentSound.addEventHandler( new SoundHandler()
     {
       @Override
-      public void onSoundLoadStateChange( SoundLoadStateChangeEvent event )
+      public void onSoundLoadStateChange( final SoundLoadStateChangeEvent event )
       {
         // See detailed documentation in SoundResource.LoadState
         // in order to understand these possible values:
@@ -65,7 +55,7 @@ public class SoundPlayer
       }
 
       @Override
-      public void onPlaybackComplete( PlaybackCompleteEvent event )
+      public void onPlaybackComplete( final PlaybackCompleteEvent event )
       {
         // WARNING: this method may in fact never be called; see SoundResource.LoadState
       }
@@ -93,40 +83,9 @@ public class SoundPlayer
    *
    * @param loop true for looping, false otherwise
    */
-  public void setLoop( boolean loop )
+  public void setLoop( final boolean loop )
   {
     currentSound.setLooping( loop );
     currentSound.play();
   }
-
-  /**
-   * Sets the muting state of the audio.
-   *
-   * @param mute true for muting, false otherwise
-   */
-  public void setMute( boolean mute )
-  {
-    currentSound.setVolume( mute ? 0 : 100 );
-  }
-
-  /**
-   * Set this sound's volume (range 0..100).
-   *
-   * @param volume new value for sound volume
-   */
-  public void setVolume( int volume )
-  {
-    currentSound.setVolume( volume );
-  }
-
-  /**
-   * Set the left/right speaker balance (range -100..100).
-   *
-   * @param balance new balance (range -100..100)
-   */
-  public void setBalance( int balance )
-  {
-    currentSound.setBalance( balance );
-  }
 }
-

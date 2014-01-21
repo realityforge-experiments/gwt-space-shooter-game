@@ -1,6 +1,5 @@
 package com.dmitrynikol.spaceshooter.client.bundle;
 
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.resources.client.ClientBundle;
 import com.google.gwt.resources.client.CssResource;
 import com.google.gwt.resources.client.DataResource;
@@ -12,15 +11,12 @@ import com.google.gwt.resources.client.ImageResource;
 public interface SpaceShooterClientBundle
   extends ClientBundle
 {
-
   interface StyleResources
     extends CssResource
   {
     @ClassName( "start" )
     String start();
   }
-
-  static final SpaceShooterClientBundle INSTANCE = GWT.create( SpaceShooterClientBundle.class );
 
   @Source( "css/space-shooter-game.css" )
   StyleResources css();

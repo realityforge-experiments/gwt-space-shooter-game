@@ -15,7 +15,7 @@ public enum Accuracy
 
   private int accuracy;
 
-  private Accuracy( int accuracy )
+  private Accuracy( final int accuracy )
   {
     this.accuracy = accuracy;
   }

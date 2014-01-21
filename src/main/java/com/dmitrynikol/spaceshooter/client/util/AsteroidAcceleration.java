@@ -13,7 +13,7 @@ public enum AsteroidAcceleration
 
   private int acceleration;
 
-  private AsteroidAcceleration( int acceleration )
+  private AsteroidAcceleration( final int acceleration )
   {
     this.acceleration = acceleration;
   }

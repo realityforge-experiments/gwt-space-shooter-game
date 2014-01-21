@@ -29,7 +29,7 @@ public class Size2D
   @Override
   public String toString()
   {
-    return "Size: (" + width + ", " + height + ")";
+    return "Size: (" + getWidth() + ", " + getHeight() + ")";
   }
 }
 

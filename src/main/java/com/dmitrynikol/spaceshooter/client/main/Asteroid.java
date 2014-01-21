@@ -32,7 +32,7 @@ public class Asteroid
   private final ClientBundleInjector injector = GWT.create( ClientBundleInjector.class );
   private final SpaceShooterClientBundle gameResourceBundle = injector.spaceShooterBundle();
 
-  public Asteroid( AsteroidType type )
+  public Asteroid( final AsteroidType type )
   {
     this.type = type;
     initComponent();
@@ -129,11 +129,6 @@ public class Asteroid
         break;
     }
     image = ImageElement.as( new Image( uri ).getElement() );
-  }
-
-  public AsteroidType getType()
-  {
-    return type;
   }
 }
 

@@ -11,7 +11,6 @@ import com.google.gwt.core.client.GWT;
  */
 public class SoundManagerFactory
 {
-
   private static final ClientBundleInjector injector = GWT.create( ClientBundleInjector.class );
   private static final SpaceShooterClientBundle gameResourceBundle = injector.spaceShooterBundle();
 
@@ -30,26 +29,17 @@ public class SoundManagerFactory
       this.name = name;
     }
 
-    public String getName()
-    {
-      return name().toLowerCase();
-    }
-
     public String getUri()
     {
       return name;
     }
   }
 
-  private static SoundManager INSTANCE = null;
+  private static final SoundManager c_soundManager =  new SoundManager();
 
   public static SoundManager getSoundManager()
   {
-    if ( INSTANCE == null )
-    {
-      INSTANCE = new SoundManager();
-    }
-    return INSTANCE;
+    return c_soundManager;
   }
 }
 

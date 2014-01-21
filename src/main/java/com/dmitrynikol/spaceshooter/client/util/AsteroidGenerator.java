@@ -12,7 +12,7 @@ import java.util.Random;
  */
 public final class AsteroidGenerator
 {
-  private static final Random generator = new Random();
+  private static final Random c_generator = new Random();
 
   /**
    * Method allowing to get a random asteroid element
@@ -31,10 +31,8 @@ public final class AsteroidGenerator
    */
   public static AsteroidType getRandomAsteroidType()
   {
-    AsteroidType[] asteroids = AsteroidType.values();
-    AsteroidType asteroidType = asteroids[ generator.nextInt( asteroids.length ) ];
-
-    return asteroidType;
+    final AsteroidType[] asteroids = AsteroidType.values();
+    return asteroids[ c_generator.nextInt( asteroids.length ) ];
   }
 
   /**
@@ -44,7 +42,7 @@ public final class AsteroidGenerator
    */
   public static List<Asteroid> getAllAsteroidList()
   {
-    List<Asteroid> asteroids = new ArrayList<Asteroid>();
+    final List<Asteroid> asteroids = new ArrayList<Asteroid>();
     for ( AsteroidType type : AsteroidType.values() )
     {
       asteroids.add( new Asteroid( type ) );

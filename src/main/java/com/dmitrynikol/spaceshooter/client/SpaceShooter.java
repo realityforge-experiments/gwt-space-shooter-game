@@ -200,10 +200,6 @@ public class SpaceShooter
 
     frameRate.addFrame( delta );
 
-    // draw permanent background color
-    //context.setFillStyle(ApplicationUtils.CANVAS_COLOR);
-    //context.fillRect(0, 0, ApplicationUtils.CANVAS_WIDTH, ApplicationUtils.CANVAS_HEIGHT);
-
     ApplicationUtils.drawDynamicBackground( context );
 
     context.setFillStyle( ApplicationUtils.TEXT_COLOR );

@@ -28,16 +28,9 @@ public class Spaceship
 
   private ImageElement image;
   private Position2D position;
-  private Size2D size;
-  private Bullet bullet = null;
+  private Bullet bullet;
 
-  public Spaceship()
-  {
-    this( ApplicationUtils.DEFAULT_X_COORD, ApplicationUtils.DEFAULT_Y_COORD );
-  }
-
-
-  public Spaceship( int xCoord, int yCoord )
+  public Spaceship( final int xCoord, final int yCoord )
   {
     position = new Position2D( xCoord, yCoord );
     initComponent();
@@ -49,7 +42,7 @@ public class Spaceship
   }
 
   @Override
-  public void render( Context2d context )
+  public void render( final Context2d context )
   {
     if ( isAlive() )
     {
@@ -83,15 +76,14 @@ public class Spaceship
   protected void initComponent()
   {
     health = 5;
-    String best = Cookies.getCookie( "score" );
-    if ( best != null )
+    final String best = Cookies.getCookie( "score" );
+    if ( null != best )
     {
       bestScore = Integer.valueOf( best );
     }
     setPosition( position );
     image = ImageElement.as( new Image( injector.spaceShooterBundle().spaceship().getSafeUri() ).getElement() );
-    size = new Size2D( image.getWidth(), image.getHeight() );
-    setSize( size );
+    setSize( new Size2D( image.getWidth(), image.getHeight() ) );
   }
 
   @Override
@@ -101,7 +93,7 @@ public class Spaceship
     ApplicationUtils.setCookie( "score", String.valueOf( bestScore ) );
   }
 
-  public void setHealth( int health )
+  public void setHealth( final int health )
   {
     this.health = health;
   }
@@ -111,22 +103,17 @@ public class Spaceship
     return health;
   }
 
-  public void setBestScore( int bestScore )
-  {
-    this.bestScore = bestScore;
-  }
-
   public int getBestScore()
   {
     return bestScore;
   }
 
-  public void setScore( int score )
+  public void setScore( final int score )
   {
     this.score = score;
   }
 
-  public void shot( Position2D position )
+  public void shot( final Position2D position )
   {
     bullet = new Bullet();
     bullet.updateBullet( bullet.getBulletType( score ) );

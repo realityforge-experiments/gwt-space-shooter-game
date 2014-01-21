@@ -16,12 +16,6 @@ public class Position2D
     this.y = y;
   }
 
-  public Position2D( Position2D position )
-  {
-    this.x = position.x;
-    this.y = position.y;
-  }
-
   public int getX()
   {
     return x;
