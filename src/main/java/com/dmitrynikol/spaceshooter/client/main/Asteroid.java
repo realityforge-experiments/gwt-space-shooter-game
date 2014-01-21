@@ -113,7 +113,7 @@ public class Asteroid
    */
   private void updateAsteroidSurface()
   {
-    SafeUri uri = null;
+    SafeUri uri;
     switch ( type.getAsteroidType() )
     {
       case 0:
