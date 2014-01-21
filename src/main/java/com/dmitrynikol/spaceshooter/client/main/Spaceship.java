@@ -96,12 +96,6 @@ public class Spaceship
   }
 
   @Override
-  public void injectImage( ImageElement image )
-  {
-    this.image = image;
-  }
-
-  @Override
   public void destroy()
   {
     bestScore = Math.max( score, bestScore );

@@ -88,12 +88,6 @@ public class PowerupElement
     updatePowerupElementPosition();
   }
 
-  @Override
-  public void injectImage( ImageElement image )
-  {
-    this.image = image;
-  }
-
   /**
    * update the position of powerup element
    */

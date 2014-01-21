@@ -96,12 +96,6 @@ public class Asteroid
     updateAsteroidAcceleration();
   }
 
-  @Override
-  public void injectImage( ImageElement image )
-  {
-    this.image = image;
-  }
-
   /**
    * method update position of asteroid
    */

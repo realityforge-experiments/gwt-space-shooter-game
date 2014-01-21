@@ -2,7 +2,6 @@ package com.dmitrynikol.spaceshooter.client.core;
 
 import com.dmitrynikol.spaceshooter.client.math.Position2D;
 import com.dmitrynikol.spaceshooter.client.math.Size2D;
-import com.google.gwt.dom.client.ImageElement;
 
 /**
  * This is the basic GameComponent class
@@ -18,8 +17,6 @@ public abstract class GameComponent
   private Size2D size;
 
   protected abstract void initComponent();
-
-  public abstract void injectImage( ImageElement image );
 
   public Position2D getPosition()
   {

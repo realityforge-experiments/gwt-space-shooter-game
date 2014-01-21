@@ -102,11 +102,6 @@ public class Bullet
     isAlive = true;
   }
 
-  @Override
-  public void injectImage( ImageElement image )
-  {
-  }
-
   private void drawBullet( Context2d context )
   {
     CanvasGradient gradient =
