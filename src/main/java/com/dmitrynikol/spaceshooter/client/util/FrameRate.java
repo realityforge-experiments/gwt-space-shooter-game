@@ -40,7 +40,7 @@ public class FrameRate
     timeIteration = 0;
   }
 
-  public void addFrame( float time )
+  public void addFrame( final float time )
   {
     iterationFrames++;
     this.totalElapsedTime += time;
