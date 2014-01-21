@@ -61,7 +61,7 @@ public class GameKeyHandler
         ApplicationContext.setPositionEnabled( drawingPosition );
         break;
       case KeyCodes.KEY_ESCAPE:
-        if ( timer != null )
+        if ( null != timer )
         {
           if ( pause )
           {
