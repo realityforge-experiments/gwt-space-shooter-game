@@ -33,11 +33,6 @@ public class Asteroid
   private final ClientBundleInjector injector = GWT.create( ClientBundleInjector.class );
   private final SpaceShooterClientBundle gameResourceBundle = injector.spaceShooterBundle();
 
-  public Asteroid()
-  {
-    this( AsteroidType.COALY );
-  }
-
   public Asteroid( AsteroidType type )
   {
     this.type = type;
