@@ -8,11 +8,6 @@ package com.dmitrynikol.spaceshooter.client.util;
 public class FrameRate
 {
   /**
-   * total elapsed frames of the game
-   */
-  private int frames;
-
-  /**
    * total elapsed time of the game
    */
   private float totalElapsedTime;
@@ -39,7 +34,6 @@ public class FrameRate
 
   public FrameRate()
   {
-    frames = 0;
     totalElapsedTime = 0;
     resetIteration = 15;
     iterationFrames = 0;
@@ -48,7 +42,6 @@ public class FrameRate
 
   public void addFrame( float time )
   {
-    frames++;
     iterationFrames++;
     this.totalElapsedTime += time;
     timeIteration += time;
@@ -59,11 +52,6 @@ public class FrameRate
       timeIteration = 0;
       iterationFrames = 0;
     }
-  }
-
-  public float getFrameRate()
-  {
-    return frames / totalElapsedTime;
   }
 
   public float getCurrentFrameRate()
