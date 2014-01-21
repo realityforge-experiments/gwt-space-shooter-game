@@ -16,7 +16,6 @@ import com.google.gwt.event.dom.client.MouseMoveHandler;
 public class GameMouseHandler
   implements MouseDownHandler, MouseMoveHandler
 {
-
   private Spaceship spaceship;
   private Position2D currentPosition;
   private Size2D elementSize;
