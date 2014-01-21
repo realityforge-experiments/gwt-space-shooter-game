@@ -20,13 +20,13 @@ public class GameMouseHandler
   private Position2D currentPosition;
   private Size2D elementSize;
 
-  public GameMouseHandler( Spaceship element )
+  public GameMouseHandler( final Spaceship element )
   {
     this.spaceship = element;
   }
 
   @Override
-  public void onMouseMove( MouseMoveEvent event )
+  public void onMouseMove( final MouseMoveEvent event )
   {
     currentPosition = spaceship.getPosition();
     elementSize = spaceship.getSize();
@@ -37,9 +37,9 @@ public class GameMouseHandler
   }
 
   @Override
-  public void onMouseDown( MouseDownEvent event )
+  public void onMouseDown( final MouseDownEvent event )
   {
-    Position2D bulletPosition =
+    final Position2D bulletPosition =
       new Position2D( currentPosition.getX() + ( elementSize.width == 0 ? 24 : elementSize.width / 2 ),
                       currentPosition.getY() - 15 );
     spaceship.shot( bulletPosition );
