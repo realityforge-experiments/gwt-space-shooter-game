@@ -23,7 +23,6 @@ import com.google.gwt.user.client.ui.Image;
 public class Asteroid
   extends GameComponent
 {
-
   private boolean isAlive;
   private int acceleration;
   private ImageElement image;

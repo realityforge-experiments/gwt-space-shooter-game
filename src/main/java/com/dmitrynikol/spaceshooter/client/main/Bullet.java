@@ -18,7 +18,6 @@ import com.google.gwt.dom.client.ImageElement;
 public class Bullet
   extends GameComponent
 {
-
   public enum Type
   {
     YELLOW_STAR( 0.8, "#F4F201", "#E4C700", "rgba(228,199,0,0)" ),

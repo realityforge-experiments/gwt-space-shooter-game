@@ -22,7 +22,6 @@ import com.google.gwt.user.client.ui.Image;
 public class PowerupElement
   extends GameComponent
 {
-
   private boolean isAlive;
 
   private ImageElement image;

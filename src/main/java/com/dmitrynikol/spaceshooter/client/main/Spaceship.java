@@ -20,7 +20,6 @@ import com.google.gwt.user.client.ui.Image;
 public class Spaceship
   extends GameComponent
 {
-
   private final ClientBundleInjector injector = GWT.create( ClientBundleInjector.class );
 
   private int health;
