@@ -18,7 +18,6 @@ import com.google.gwt.user.client.Timer;
 public class GameKeyHandler
   implements KeyDownHandler
 {
-
   private Spaceship spaceship;
   private Timer timer;
   private boolean pause;
