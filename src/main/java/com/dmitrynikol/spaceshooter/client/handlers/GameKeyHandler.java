@@ -75,7 +75,6 @@ public class GameKeyHandler
             ApplicationUtils.drawPauseLabel();
           }
           pause = !pause;
-          //DOM.getElementById("start").getStyle().setDisplay(Display.INLINE);
         }
       default:
         break;
