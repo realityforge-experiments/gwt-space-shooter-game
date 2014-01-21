@@ -27,7 +27,6 @@ public class Asteroid
   private int acceleration;
   private ImageElement image;
   private Position2D position;
-  private Size2D size;
   private AsteroidType type;
 
   private final ClientBundleInjector injector = GWT.create( ClientBundleInjector.class );
@@ -84,8 +83,7 @@ public class Asteroid
     isAlive = true;
     updateAsteroidSurface();
     //image = ImageElement.as(new Image(injector.spaceShooterBundle().asteroid1().getSafeUri()).getElement());
-    size = new Size2D( image.getWidth(), image.getHeight() );
-    setSize( size );
+    setSize( new Size2D( image.getWidth(), image.getHeight() ) );
     updateAsteroidPosition();
     updateAsteroidAcceleration();
   }
