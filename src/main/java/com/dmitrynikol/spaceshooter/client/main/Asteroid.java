@@ -52,7 +52,7 @@ public class Asteroid
   }
 
   @Override
-  public void render( Context2d context )
+  public void render( final Context2d context )
   {
     context.drawImage( image, position.getX(), position.getY() );
 
@@ -64,7 +64,7 @@ public class Asteroid
   }
 
   @Override
-  public void update( float delta )
+  public void update( final float delta )
   {
     if ( !ApplicationContext.isFreezeEnabled() )
     {
@@ -92,7 +92,7 @@ public class Asteroid
    */
   private void updateAsteroidPosition()
   {
-    int randomNumber =
+    final int randomNumber =
       ApplicationUtils.getRandomIntegerNumberBetween( 0, ApplicationUtils.MAXIMUM_WIDTH_BOUNDARY -
                                                          getSize().getWidth() );
     this.position = new Position2D( randomNumber, 0 );
@@ -112,7 +112,7 @@ public class Asteroid
    */
   private void updateAsteroidSurface()
   {
-    SafeUri uri;
+    final SafeUri uri;
     switch ( type.getAsteroidType() )
     {
       case 0:
