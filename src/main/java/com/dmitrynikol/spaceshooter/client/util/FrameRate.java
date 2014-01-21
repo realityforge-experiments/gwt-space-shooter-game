@@ -7,7 +7,6 @@ package com.dmitrynikol.spaceshooter.client.util;
  */
 public class FrameRate
 {
-
   /**
    * total elapsed frames of the game
    */
