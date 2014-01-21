@@ -24,9 +24,6 @@ public class GameKeyHandler
   private boolean pause;
   private boolean drawingPosition;
 
-  private Position2D currentPosition;
-  private Size2D elementSize;
-
   public GameKeyHandler( Spaceship spaceship )
   {
     this.spaceship = spaceship;
@@ -38,8 +35,8 @@ public class GameKeyHandler
   public void onKeyDown( KeyDownEvent event )
   {
     int key = event.getNativeKeyCode();
-    currentPosition = spaceship.getPosition();
-    elementSize = spaceship.getSize();
+    final Position2D currentPosition = spaceship.getPosition();
+    final Size2D elementSize = spaceship.getSize();
 
     switch ( key )
     {
