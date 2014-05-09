@@ -1,4 +1,5 @@
 require 'buildr/git_auto_version'
+require 'buildr/gwt'
 
 GWT_MODULE = 'com.dmitrynikol.spaceshooter.SpaceShooter'
 
