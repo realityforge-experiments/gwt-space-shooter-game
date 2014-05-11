@@ -144,4 +144,3 @@ public class Bullet
     this.type = type;
   }
 }
-

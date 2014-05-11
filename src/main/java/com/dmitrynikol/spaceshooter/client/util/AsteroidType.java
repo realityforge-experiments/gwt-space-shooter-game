@@ -30,4 +30,3 @@ public enum AsteroidType
     return acceleration.getAcceleration();
   }
 }
-

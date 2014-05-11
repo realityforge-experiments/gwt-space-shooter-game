@@ -9,4 +9,3 @@ public interface Updater
 {
   void update( float delta );
 }
-

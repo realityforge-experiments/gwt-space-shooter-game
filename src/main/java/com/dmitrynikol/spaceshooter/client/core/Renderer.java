@@ -11,4 +11,3 @@ public interface Renderer
 {
   void render( Context2d context );
 }
-

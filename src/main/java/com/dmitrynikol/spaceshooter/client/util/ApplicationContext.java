@@ -190,4 +190,3 @@ public class ApplicationContext
     timer.schedule( POWERUP_DELAY );
   }
 }
-

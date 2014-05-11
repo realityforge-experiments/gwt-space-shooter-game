@@ -32,4 +32,3 @@ public class Size2D
     return "Size: (" + getWidth() + ", " + getHeight() + ")";
   }
 }
-

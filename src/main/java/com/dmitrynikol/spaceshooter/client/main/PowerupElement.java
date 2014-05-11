@@ -132,4 +132,3 @@ public class PowerupElement
     return powerup;
   }
 }
-

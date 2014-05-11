@@ -45,4 +45,3 @@ public class GameMouseHandler
     spaceship.shot( bulletPosition );
   }
 }
-

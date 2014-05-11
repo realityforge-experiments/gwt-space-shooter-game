@@ -22,4 +22,3 @@ public final class PowerupsGenerator
     return powerups[ c_generator.nextInt( powerups.length ) ];
   }
 }
-

@@ -42,4 +42,3 @@ public class SoundManagerFactory
     return c_soundManager;
   }
 }
-

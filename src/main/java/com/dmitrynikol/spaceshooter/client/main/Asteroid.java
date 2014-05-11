@@ -131,4 +131,3 @@ public class Asteroid
     image = ImageElement.as( new Image( uri ).getElement() );
   }
 }
-

@@ -14,4 +14,3 @@ public class ClientBundleModule
     bind( SpaceShooterClientBundle.class ).to( GeneralClientBundle.class );
   }
 }
-

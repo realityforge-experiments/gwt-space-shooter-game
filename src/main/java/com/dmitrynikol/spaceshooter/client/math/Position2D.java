@@ -42,4 +42,3 @@ public class Position2D
     return "Position: (" + x + ", " + y + ")";
   }
 }
-

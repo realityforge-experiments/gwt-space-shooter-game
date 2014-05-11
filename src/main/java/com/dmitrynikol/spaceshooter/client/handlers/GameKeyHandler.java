@@ -84,4 +84,3 @@ public class GameKeyHandler
     this.timer = timer;
   }
 }
-

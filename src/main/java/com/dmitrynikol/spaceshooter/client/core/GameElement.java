@@ -9,4 +9,3 @@ public interface GameElement
 
   void destroy();
 }
-

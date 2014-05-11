@@ -364,4 +364,3 @@ public final class ApplicationUtils
     context.setGlobalAlpha( 1 );
   }
 }
-

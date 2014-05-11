@@ -59,4 +59,3 @@ public enum Powerup
     return c_typeMap.get( code );
   }
 }
-
